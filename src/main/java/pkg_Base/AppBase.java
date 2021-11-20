@@ -24,10 +24,10 @@ public class AppBase {
 
 	public void launch() {
 		driver.get("https://dd7dev.oneshield.com/osdd/");
-		driver.manage().window().maximize();
+		//driver.manage().window().maximize();
 
 		// implicit wait
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(130, TimeUnit.SECONDS);
 	}
 
 	public void setBrowser(String browsername) {

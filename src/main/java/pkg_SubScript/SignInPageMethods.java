@@ -1,5 +1,8 @@
 package pkg_SubScript;
 
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
 
 import pkg_Base.AppBase;
@@ -16,10 +19,16 @@ public class SignInPageMethods extends AppBase implements SignInPageObjects {
 		driver.findElement(OSDesigner_login_password).clear();
 		driver.findElement(OSDesigner_login_password).sendKeys(pwd);
 	}
-	private static void setenvironment() {
+	private static void setenvironment()  {
 		driver.findElement(OSDesigner_login_environment).clear();
-		Select environment =new Select(driver.findElement(OSDesigner_login_environment));
-		environment.selectByVisibleText("Designer QA(QADD)");
+		driver.findElement(OSDesigner_login_environment).click();
+		driver.findElement(OSDesigner_login_environment).sendKeys("Designer QA");
+		//Thread.sleep(100);
+		//driver.findElement(By.id("ctl00_ContentPlaceHolder1_RadGrid1_ctl00_ctl02_ctl02_EditFormControl_rcbControllerType1_Input")).sendKeys("ValueTwo", Keys.ARROW_DOWN, Keys.ENTER)
+		//driver.manage().timeouts().implicitlyWait(130, TimeUnit.SECONDS);
+		//Select environment =new Select(driver.findElement(OSDesigner_login_environment));
+		//environment.selectByVisibleText("Designer QA(QADD)");
+		
 		
 	}
 	private static void setloginbtn() {
@@ -36,9 +45,11 @@ public class SignInPageMethods extends AppBase implements SignInPageObjects {
 		driver.findElement(OSDesigner_login_continuebtn).click();
 	}
 	
-	public static void ValidLogin (String usr, String pwd) {
+	public static void ValidLogin (String usr, String pwd ) {
 		
 		setusername(usr);
 		setpassword(pwd);
+		setenvironment();
+		setloginbtn();
 }
 }
