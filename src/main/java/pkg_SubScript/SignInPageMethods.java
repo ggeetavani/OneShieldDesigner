@@ -1,7 +1,11 @@
 package pkg_SubScript;
 
+import java.util.Iterator;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
 
@@ -19,10 +23,16 @@ public class SignInPageMethods extends AppBase implements SignInPageObjects {
 		driver.findElement(OSDesigner_login_password).clear();
 		driver.findElement(OSDesigner_login_password).sendKeys(pwd);
 	}
-	private static void setenvironment()  {
+	private static void setenvironment() throws InterruptedException  {
 		driver.findElement(OSDesigner_login_environment).clear();
 		driver.findElement(OSDesigner_login_environment).click();
 		driver.findElement(OSDesigner_login_environment).sendKeys("Designer QA");
+		Thread.sleep(5000);
+		
+		//driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);
+		//driver.findElement(By.xpath("//li[@id='ext-92']")).sendKeys("XX");
+		
+		//driver.findElement(OSDesigner_login_environment).sendKeys("Designer QA");
 		//Thread.sleep(100);
 		//driver.findElement(By.id("ctl00_ContentPlaceHolder1_RadGrid1_ctl00_ctl02_ctl02_EditFormControl_rcbControllerType1_Input")).sendKeys("ValueTwo", Keys.ARROW_DOWN, Keys.ENTER)
 		//driver.manage().timeouts().implicitlyWait(130, TimeUnit.SECONDS);
@@ -36,9 +46,18 @@ public class SignInPageMethods extends AppBase implements SignInPageObjects {
 		
 	}
 	private static void setrole() {
-		driver.findElement(OSDesigner_login_role).clear();
-		Select role= new Select(driver.findElement(OSDesigner_login_role));
-		role.selectByVisibleText("SYSTEM");
+		
+		//driver.switchTo().alert().dismiss();
+		//driver.findElement(By.xpath("//*[@id=\"tool-1029-toolEl\"]")).click();
+		//driver.findElement(OSDesigner_login_role).clear();
+		driver.findElement(OSDesigner_login_role).click();
+		//driver.switchTo().activeElement().click();
+		driver.findElement(OSDesigner_login_role).sendKeys("SYSTEM");
+		//driver.findElement(OSDesigner_login_setrole).click();
+		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+		
+		
 	}
 	private static void setcontinue() {
 	
@@ -49,7 +68,17 @@ public class SignInPageMethods extends AppBase implements SignInPageObjects {
 		
 		setusername(usr);
 		setpassword(pwd);
-		setenvironment();
+		try {
+			setenvironment();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		setloginbtn();
+		
+			setrole();
+		
+		
+		setcontinue();
 }
 }
