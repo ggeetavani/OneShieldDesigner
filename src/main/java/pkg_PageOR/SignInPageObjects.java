@@ -18,7 +18,7 @@ public interface SignInPageObjects {
 	// selecting role on login page
 	
 	By OSDesigner_login_role = By.xpath("//*[@name='roleCB']");
-	By OSDesigner_login_setrole = By.xpath("//li[contains(text(),'Designer Administrator')]");
+	//By OSDesigner_login_setrole = By.xpath("//li[contains(text(),'SYSTEM')]");
 	By OSDesigner_login_continuebtn = By.linkText("Continue");
 	//By OSDesigner_login_continuebtn = By.xpath("//*[@id='button-1028-btnIconEl']");
 
