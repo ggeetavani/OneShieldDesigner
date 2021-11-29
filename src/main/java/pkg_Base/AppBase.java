@@ -23,8 +23,8 @@ public class AppBase {
 	public static String userDir = System.getProperty("user.dir");
 
 	public void launch() {
-		driver.get("https://dd7dev.oneshield.com/osdd/");
-		//driver.manage().window().maximize();
+		driver.get("http://localhost:4200/auth");
+		driver.manage().window().maximize();
 
 		// implicit wait
 		driver.manage().timeouts().implicitlyWait(130, TimeUnit.SECONDS);

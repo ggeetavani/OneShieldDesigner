@@ -17,6 +17,11 @@ public class SignInInputDataProvider extends AppBase{
 		Object[][] data = readfrom_excel(userDir+ "//InputFile//OneShieldTestData.xlsx", "PositiveSignIn");
 		return data;
 	}
+	@DataProvider
+	public static Object[][] dp_negativedata() throws IOException {
+		Object[][] data = readfrom_excel(userDir+ "//InputFile//OneShieldTestData.xlsx", "NegativeSignin");
+		return data;
+	}
 
 	public static String[][] readfrom_excel(String file_path, String sheet_name) throws IOException {
 		FileInputStream fso = new FileInputStream(file_path);
@@ -33,7 +38,7 @@ public class SignInInputDataProvider extends AppBase{
 
 		for (int r = 1; r <= rowcnt; r++) {
 			for (int c = 0; c < colcnt; c++) {
-
+				
 				exceldata[r-1][c] = sh.getRow(r).getCell(c).getStringCellValue();
 
 			}
@@ -41,5 +46,10 @@ public class SignInInputDataProvider extends AppBase{
 		}
 		return exceldata;
 	}
+	
+	
+
+	
+
 
 }

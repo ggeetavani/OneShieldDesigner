@@ -7,7 +7,7 @@ public class OSDLandingMethods extends AppBase implements OSDLandingObjects{
 
 public static boolean checksignin(){
 		
-		return driver.findElement(OSD_dashboard_General_Development_Dashboard).isDisplayed();
+		return driver.findElement(OSD_Record).isDisplayed();
 	}
 
 }
